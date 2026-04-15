@@ -8,61 +8,59 @@
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="header">
-      <div class="logo">411</div>
-      <div>
-        <h1>Capital Funds Services LLC</h1>
-        <p class="subtitle">411 Pack – Property Intelligence Tool</p>
-      </div>
+  <div class="header">
+    <div class="logo">411</div>
+    <div>
+      <h1>Capital Funds Services LLC</h1>
+      <p class="subtitle">411 Pack – Property Intelligence Tool</p>
     </div>
+  </div>
 
-    <div class="card">
+  <div class="card">
 
-      <div class="grid">
+    <div class="grid">
 
-        <!-- LEFT PANEL -->
-        <div class="panel">
+      <!-- LEFT -->
+      <div class="panel">
 
-          <label>Property Address</label>
-          <input id="address" placeholder="Enter full property address">
+        <label>Property Address</label>
+        <input id="address" placeholder="Enter full property address">
 
-          <label>Property Type</label>
-          <select id="propertyType">
-            <option>Residential (1-4 units)</option>
-            <option>Multifamily 5+</option>
-            <option>Commercial</option>
-            <option>Land</option>
-          </select>
+        <label>Property Type</label>
+        <select id="propertyType">
+          <option>Residential (1-4 units)</option>
+          <option>Multifamily 5+</option>
+          <option>Commercial</option>
+          <option>Land</option>
+        </select>
 
-          <label>Mode</label>
-          <select id="mode">
-            <option value="full">Full Report</option>
-            <option value="comps">Comps Only</option>
-          </select>
+        <label>Mode</label>
+        <select id="mode">
+          <option value="full">Full Report</option>
+          <option value="comps">Comps Only</option>
+        </select>
 
-          <label>Notes (optional)</label>
-          <input id="notes" placeholder="ex: buyer targeting 480K">
+        <label>Notes</label>
+        <input id="notes" placeholder="Optional">
 
-          <div class="buttons">
-            <button class="run" onclick="generate()">Run Report</button>
-            <button class="copy" onclick="copyText()">Copy</button>
-          </div>
-
+        <div class="buttons">
+          <button class="run" onclick="generate()">Run Report</button>
+          <button class="copy" onclick="copyText()">Copy</button>
         </div>
 
-        <!-- RIGHT PANEL -->
-        <div class="panel output-panel">
+      </div>
 
-          <div class="output-header">
-            Generated Command
-          </div>
+      <!-- RIGHT -->
+      <div class="panel output-panel">
 
-          <div id="output" class="output">
-            Your command will appear here.
-          </div>
+        <div class="output-header">
+          Generated Command
+        </div>
 
+        <div id="output" class="output">
+          Ready...
         </div>
 
       </div>
@@ -71,7 +69,9 @@
 
   </div>
 
-  <script src="app.js"></script>
+</div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
