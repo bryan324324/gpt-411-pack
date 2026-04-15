@@ -1,104 +1,105 @@
 body {
   margin: 0;
   font-family: Inter, sans-serif;
-  background: radial-gradient(circle at top left, #07121d, #02060c);
+  background: radial-gradient(circle at 20% 0%, #071726, #02060c 60%);
   color: #e6edf3;
 }
 
 /* WRAPPER */
 .wrapper {
-  max-width: 1300px;
+  max-width: 1350px;
   margin: 0 auto;
-  padding: 40px 30px;
+  padding: 50px 40px;
 }
 
 /* HEADER */
 .header {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto;
   align-items: center;
-  margin-bottom: 45px;
+  gap: 18px;
+  margin-bottom: 50px;
 }
 
 /* LOGO */
 .logo {
-  height: 110px;
+  height: 115px;
 
   filter:
-    brightness(1.7)
+    brightness(1.8)
     contrast(1.4)
     saturate(1.3)
-    drop-shadow(0 0 20px rgba(212,175,55,0.45))
-    drop-shadow(0 10px 20px rgba(0,0,0,0.9));
+    drop-shadow(0 0 22px rgba(212,175,55,0.45))
+    drop-shadow(0 10px 25px rgba(0,0,0,0.9));
 }
 
-/* CENTER BRAND */
-.brand-center {
-  display: flex;
-  justify-content: center;
-}
-
-.brand-stack {
-  text-align: center;
-}
-
-/* MAIN TITLE — FIXED */
-.brand-main {
+/* TITLE */
+.brand {
   font-family: "Playfair Display", serif;
-  font-size: 30px;
-  letter-spacing: 0.5px;
+  font-size: 28px;
+  letter-spacing: 0.6px;
 
-  background: linear-gradient(90deg, #cfae4a, #f5d97a 40%, #cfae4a);
+  background: linear-gradient(
+    90deg,
+    #cfae4a 0%,
+    #f5d97a 40%,
+    #ffffff 55%,
+    #f5d97a 70%,
+    #cfae4a 100%
+  );
+
+  background-size: 200% auto;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   text-shadow:
     0 0 14px rgba(212,175,55,0.25),
     0 2px 6px rgba(0,0,0,0.9);
+
+  animation: goldShift 6s ease-in-out infinite;
+
+  margin-left: 6px;
 }
 
-/* SUBTITLE */
-.brand-sub {
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: #7f97b3;
-  margin-top: 6px;
+/* GOLD ANIMATION */
+@keyframes goldShift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 /* STATUS */
-.brand-right {
+.status {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 11px;
+  color: #00ff88;
 }
 
-.live-dot {
+.dot {
   width: 6px;
   height: 6px;
   background: #00ff88;
   border-radius: 50%;
-  box-shadow: 0 0 8px #00ff88;
-}
-
-.live-text {
-  font-size: 11px;
-  color: #00ff88;
-  letter-spacing: 1px;
+  box-shadow: 0 0 10px #00ff88;
 }
 
 /* MAIN GRID */
 .main {
   display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 30px;
+  grid-template-columns: 440px 1fr;
+  gap: 35px;
 }
 
 /* PANELS */
 .panel {
-  background: linear-gradient(145deg, #071520, #030b12);
+  background: linear-gradient(145deg, #071726, #020912);
   border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 14px;
-  padding: 22px;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
 .left {
@@ -109,50 +110,72 @@ body {
   min-height: 420px;
 }
 
-/* TITLES */
-.panel-title {
+/* LABEL */
+.label {
   font-size: 11px;
-  color: #6c7f93;
-  margin-bottom: 12px;
+  color: #7c8fa3;
+  margin-bottom: 14px;
 }
 
 /* INPUTS */
 input, select {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  background: #02060c;
+  padding: 13px;
+  margin-bottom: 14px;
+
+  background: #01050a;
   border: 1px solid rgba(255,255,255,0.06);
   color: white;
+
   border-radius: 6px;
+}
+
+/* INPUT FOCUS */
+input:focus, select:focus {
+  outline: none;
+  border-color: rgba(212,175,55,0.4);
+  box-shadow: 0 0 0 1px rgba(212,175,55,0.2);
 }
 
 /* BUTTONS */
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .run {
-  background: #f5c542;
+  background: linear-gradient(135deg, #f5c542, #d4a938);
   border: none;
-  padding: 10px 18px;
+  padding: 11px 20px;
   border-radius: 6px;
   font-weight: 600;
+  color: #000;
+  cursor: pointer;
+}
+
+.run:hover {
+  filter: brightness(1.1);
 }
 
 .copy {
-  background: #3b6fe0;
+  background: linear-gradient(135deg, #3b6fe0, #2f5ec4);
   border: none;
-  padding: 10px 18px;
+  padding: 11px 20px;
   border-radius: 6px;
   color: white;
+  cursor: pointer;
+}
+
+.copy:hover {
+  filter: brightness(1.1);
 }
 
 /* OUTPUT */
 pre {
   background: #000;
-  padding: 16px;
-  border-radius: 10px;
+  padding: 18px;
+  border-radius: 12px;
   min-height: 320px;
+  font-family: monospace;
+  color: #d1d5db;
 }
