@@ -1,181 +1,84 @@
-body {
-  margin: 0;
-  font-family: Inter, sans-serif;
-  background: radial-gradient(circle at 20% 0%, #071726, #02060c 60%);
-  color: #e6edf3;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* WRAPPER */
-.wrapper {
-  max-width: 1350px;
-  margin: 0 auto;
-  padding: 50px 40px;
-}
+<title>Bryan's Property Analyzer</title>
 
-/* HEADER */
-.header {
-  display: grid;
-  grid-template-columns: auto auto 1fr auto;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 50px;
-}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
-/* LOGO */
-.logo {
-  height: 115px;
+<link rel="stylesheet" href="styles.css">
+</head>
 
-  filter:
-    brightness(1.8)
-    contrast(1.4)
-    saturate(1.3)
-    drop-shadow(0 0 22px rgba(212,175,55,0.45))
-    drop-shadow(0 10px 25px rgba(0,0,0,0.9));
-}
+<body>
 
-/* TITLE */
-.brand {
-  font-family: "Playfair Display", serif;
-  font-size: 28px;
-  letter-spacing: 0.6px;
+<div class="wrapper">
 
-  background: linear-gradient(
-    90deg,
-    #cfae4a 0%,
-    #f5d97a 40%,
-    #ffffff 55%,
-    #f5d97a 70%,
-    #cfae4a 100%
-  );
+  <!-- HEADER -->
+  <div class="header">
 
-  background-size: 200% auto;
+    <div class="header-left">
+      <img src="logo.png" class="logo">
+    </div>
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    <div class="header-center">
+      <div class="brand">Bryan's Property Analyzer</div>
+    </div>
 
-  text-shadow:
-    0 0 14px rgba(212,175,55,0.25),
-    0 2px 6px rgba(0,0,0,0.9);
+    <div class="header-right">
+      <div class="status">
+        <span class="dot"></span> LIVE
+      </div>
+    </div>
 
-  animation: goldShift 6s ease-in-out infinite;
+  </div>
 
-  margin-left: 6px;
-}
+  <!-- MAIN -->
+  <div class="main">
 
-/* GOLD ANIMATION */
-@keyframes goldShift {
-  0% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-  100% { background-position: 0% center; }
-}
+    <!-- LEFT PANEL -->
+    <div class="panel left">
 
-/* STATUS */
-.status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #00ff88;
-}
+      <div class="label">INPUT</div>
 
-.dot {
-  width: 6px;
-  height: 6px;
-  background: #00ff88;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00ff88;
-}
+      <input id="address" placeholder="Street, City, State, Zip">
 
-/* MAIN GRID */
-.main {
-  display: grid;
-  grid-template-columns: 440px 1fr;
-  gap: 35px;
-}
+      <select id="type">
+        <option>Residential (1-4 units)</option>
+        <option>Multifamily 5+</option>
+        <option>Commercial</option>
+        <option>Land</option>
+      </select>
 
-/* PANELS */
-.panel {
-  background: linear-gradient(145deg, #071726, #020912);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-}
+      <select id="mode">
+        <option>Full Report</option>
+        <option>Comps Only</option>
+      </select>
 
-.left {
-  height: fit-content;
-}
+      <input id="notes" placeholder="Optional context">
 
-.right {
-  min-height: 420px;
-}
+      <div class="buttons">
+        <button class="run" onclick="run()">RUN</button>
+        <button class="copy" onclick="copy()">COPY</button>
+      </div>
 
-/* LABEL */
-.label {
-  font-size: 11px;
-  color: #7c8fa3;
-  margin-bottom: 14px;
-}
+    </div>
 
-/* INPUTS */
-input, select {
-  width: 100%;
-  padding: 13px;
-  margin-bottom: 14px;
+    <!-- RIGHT PANEL -->
+    <div class="panel right">
 
-  background: #01050a;
-  border: 1px solid rgba(255,255,255,0.06);
-  color: white;
+      <div class="label">OUTPUT</div>
 
-  border-radius: 6px;
-}
+      <pre id="output">Ready...</pre>
 
-/* INPUT FOCUS */
-input:focus, select:focus {
-  outline: none;
-  border-color: rgba(212,175,55,0.4);
-  box-shadow: 0 0 0 1px rgba(212,175,55,0.2);
-}
+    </div>
 
-/* BUTTONS */
-.buttons {
-  display: flex;
-  gap: 12px;
-}
+  </div>
 
-.run {
-  background: linear-gradient(135deg, #f5c542, #d4a938);
-  border: none;
-  padding: 11px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  color: #000;
-  cursor: pointer;
-}
+</div>
 
-.run:hover {
-  filter: brightness(1.1);
-}
+<script src="app.js"></script>
 
-.copy {
-  background: linear-gradient(135deg, #3b6fe0, #2f5ec4);
-  border: none;
-  padding: 11px 20px;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
-
-.copy:hover {
-  filter: brightness(1.1);
-}
-
-/* OUTPUT */
-pre {
-  background: #000;
-  padding: 18px;
-  border-radius: 12px;
-  min-height: 320px;
-  font-family: monospace;
-  color: #d1d5db;
-}
+</body>
+</html>
