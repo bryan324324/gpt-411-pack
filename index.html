@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Capital Funds Services LLC – 411 Pack</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+
+<title>Capital Funds Services LLC — 411 Pack</title>
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -18,53 +24,40 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="grid">
 
-    <div class="grid">
+    <div class="card">
 
-      <!-- LEFT -->
-      <div class="panel">
+      <label>Property Address</label>
+      <input id="address" placeholder="Enter full property address">
 
-        <label>Property Address</label>
-        <input id="address" placeholder="Enter full address (Street, City, State, Zip)">
+      <label>Property Type</label>
+      <select id="propertyType">
+        <option>Residential (1-4 units)</option>
+        <option>Multifamily 5+</option>
+        <option>Commercial</option>
+        <option>Land</option>
+      </select>
 
-        <label>Property Type</label>
-        <select id="propertyType">
-          <option>Residential (1-4 units)</option>
-          <option>Multifamily 5+</option>
-          <option>Commercial</option>
-          <option>Land</option>
-        </select>
+      <label>Mode</label>
+      <select id="mode">
+        <option value="full">Full Report</option>
+        <option value="comps">Comps Only</option>
+      </select>
 
-        <label>Mode</label>
-        <select id="mode">
-          <option value="full">Full Report</option>
-          <option value="comps">Comps Only</option>
-        </select>
+      <label>Notes</label>
+      <input id="notes" placeholder="Optional">
 
-        <label>Notes</label>
-        <input id="notes" placeholder="Optional">
-
-        <div class="buttons">
-          <button class="run" onclick="generate()">Run Report</button>
-          <button class="copy" onclick="copyText()">Copy</button>
-        </div>
-
+      <div class="buttons">
+        <button class="run" onclick="generate()">Run Report</button>
+        <button class="copy" onclick="copyText()">Copy</button>
       </div>
 
-      <!-- RIGHT -->
-      <div class="panel output-panel">
+    </div>
 
-        <div class="output-header">
-          Generated Command
-        </div>
-
-        <div id="output" class="output">
-          Ready...
-        </div>
-
-      </div>
-
+    <div class="output-card">
+      <div class="output-title">Generated Command</div>
+      <pre id="output">Ready...</pre>
     </div>
 
   </div>
