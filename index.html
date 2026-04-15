@@ -6,63 +6,67 @@
 
 <title>411 Pack</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
   <!-- HEADER -->
-  <header class="header">
-    <img src="logo.png" class="logo">
+  <div class="header">
 
-    <div class="brand">
-      <div class="title">411</div>
-      <div class="subtitle">Investor Terminal</div>
+    <div class="brand-left">
+      <img src="logo.png" class="logo">
     </div>
 
-    <div class="status">LIVE</div>
-  </header>
+    <div class="brand-center">
+      <div class="firm-line">
+        <span class="firm-name">411</span>
+        <span class="firm-divider"></span>
+        <span class="firm-type">INVESTOR TERMINAL</span>
+      </div>
+    </div>
 
-  <!-- MAIN GRID -->
-  <div class="grid">
+    <div class="brand-right">
+      <span class="live-dot"></span>
+      <span class="live-text">LIVE</span>
+    </div>
 
-    <!-- INPUT -->
-    <div class="panel">
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="panel left">
       <div class="panel-title">INPUT</div>
 
       <input id="address" placeholder="Street, City, State, Zip">
 
-      <div class="row">
-        <select id="propertyType">
-          <option>Residential (1-4 units)</option>
-          <option>Multifamily 5+</option>
-          <option>Commercial</option>
-          <option>Land</option>
-        </select>
+      <select id="propertyType">
+        <option>Residential (1-4 units)</option>
+        <option>Multifamily 5+</option>
+        <option>Commercial</option>
+        <option>Land</option>
+      </select>
 
-        <select id="mode">
-          <option value="full">Full Report</option>
-          <option value="comps">Comps Only</option>
-        </select>
-      </div>
+      <select id="mode">
+        <option value="full">Full Report</option>
+        <option value="comps">Comps Only</option>
+      </select>
 
       <input id="notes" placeholder="Optional context">
 
-      <div class="actions">
+      <div class="buttons">
         <button class="run" onclick="generate()">RUN</button>
         <button class="copy" onclick="copyText()">COPY</button>
       </div>
-
     </div>
 
-    <!-- OUTPUT -->
-    <div class="panel">
+    <div class="panel right">
       <div class="panel-title">OUTPUT</div>
-
       <pre id="output">Ready...</pre>
     </div>
 
