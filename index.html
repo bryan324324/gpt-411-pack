@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>411 Pack — Investor Terminal</title>
+<title>411 Pack</title>
 
-  <!-- Premium fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+<div class="container">
+
   <!-- HEADER -->
   <header class="header">
-    <div class="logo-wrap">
-      <img src="logo.png" class="logo" />
+    <img src="logo.png" class="logo">
+
+    <div class="brand">
+      <div class="title">411</div>
+      <div class="subtitle">Investor Terminal</div>
     </div>
 
-    <div class="title-block">
-      <h1>411 Pack</h1>
-      <p>Investor Command Terminal</p>
-    </div>
-
-    <div class="status">● LIVE</div>
+    <div class="status">LIVE</div>
   </header>
 
-  <!-- MAIN -->
-  <main class="grid">
+  <!-- MAIN GRID -->
+  <div class="grid">
 
     <!-- INPUT -->
-    <section class="card">
-      <div class="card-label">INPUT</div>
+    <div class="panel">
+      <div class="panel-title">INPUT</div>
 
-      <input id="address" placeholder="Street, City, State, Zip" />
+      <input id="address" placeholder="Street, City, State, Zip">
 
       <div class="row">
         <select id="propertyType">
@@ -51,39 +50,26 @@
         </select>
       </div>
 
-      <input id="notes" placeholder="Optional context" />
+      <input id="notes" placeholder="Optional context">
 
-      <div class="buttons">
+      <div class="actions">
         <button class="run" onclick="generate()">RUN</button>
         <button class="copy" onclick="copyText()">COPY</button>
       </div>
 
-      <div class="hotkeys">
-        ENTER = Run • SHIFT+ENTER = Launch ChatGPT
-      </div>
-
-      <!-- HISTORY -->
-      <div class="history">
-        <div class="history-title">Command History</div>
-        <ul id="historyList"></ul>
-      </div>
-
-    </section>
+    </div>
 
     <!-- OUTPUT -->
-    <section class="card">
-      <div class="card-label">OUTPUT</div>
-
-      <div class="output-header">
-        <span>Structured Execution READY</span>
-        <span class="ready">READY</span>
-      </div>
+    <div class="panel">
+      <div class="panel-title">OUTPUT</div>
 
       <pre id="output">Ready...</pre>
-    </section>
+    </div>
 
-  </main>
+  </div>
 
-  <script src="app.js"></script>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
