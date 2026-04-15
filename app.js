@@ -28,6 +28,5 @@ function setOutput(text) {
 }
 
 function copyText() {
-  const text = document.getElementById("output").innerText;
-  navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(document.getElementById("output").innerText);
 }
