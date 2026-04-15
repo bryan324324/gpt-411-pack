@@ -9,10 +9,8 @@ function generate() {
     return;
   }
 
-  // NORMALIZE INPUT
   address = normalizeAddress(address);
 
-  // VALIDATION (AFTER CLEANUP)
   const hasZip = /\d{5}$/.test(address);
   const hasState = /[A-Z]{2}/.test(address);
 
@@ -52,43 +50,26 @@ function generate() {
   }
 
   setOutput(cmd);
+
+  // AUTO OPEN CHATGPT WITH PREFILLED COMMAND
+  openChatGPT(cmd);
 }
 
-/* ADDRESS NORMALIZATION (THIS IS THE UPGRADE) */
+/* NORMALIZE ADDRESS */
 function normalizeAddress(input) {
   let addr = input.toUpperCase();
 
-  // Fix common abbreviations
-  addr = addr.replace(/\bAVE\b/g, "AVE");
-  addr = addr.replace(/\bSTREET\b/g, "ST");
-  addr = addr.replace(/\bROAD\b/g, "RD");
-  addr = addr.replace(/\bDRIVE\b/g, "DR");
-
-  // Ensure comma before city if missing
-  if (!addr.includes(",")) {
-    const parts = addr.split(" ");
-    if (parts.length > 4) {
-      const zipIndex = parts.findIndex(p => /^\d{5}$/.test(p));
-      if (zipIndex > 2) {
-        const state = parts[zipIndex - 1];
-        const city = parts.slice(2, zipIndex - 1).join(" ");
-        const street = parts.slice(0, 2).join(" ");
-
-        addr = `${street}, ${city}, ${state} ${parts[zipIndex]}`;
-      }
-    }
-  }
-
-  // Clean extra spaces
   addr = addr.replace(/\s+/g, " ").trim();
 
   return addr;
 }
 
+/* OUTPUT */
 function setOutput(text) {
   document.getElementById("output").innerText = text;
 }
 
+/* COPY */
 function copyText() {
   const text = document.getElementById("output").innerText;
   if (!text || text === "Ready...") return;
@@ -105,6 +86,15 @@ function copyText() {
   }, 1200);
 }
 
+/* OPEN CHATGPT */
+function openChatGPT(text) {
+  const encoded = encodeURIComponent(text);
+  const url = `https://chat.openai.com/?q=${encoded}`;
+
+  window.open(url, "_blank");
+}
+
+/* ENTER = RUN */
 document.addEventListener("keydown", function(e) {
   if (e.key === "Enter") generate();
 });
