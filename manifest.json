@@ -1,0 +1,10 @@
+{
+  "name": "GPT 411 Pack",
+  "short_name": "GPT 411",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0f172a",
+  "description": "Property report launcher for ChatGPT",
+  "icons": []
+}
