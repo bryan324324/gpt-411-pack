@@ -2,695 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>411 Pack</title>
-
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-<style>
-:root {
-  --bg-1: #07111f;
-  --bg-2: #0b1a2f;
-  --panel: rgba(10, 19, 34, 0.82);
-  --panel-2: rgba(7, 14, 26, 0.92);
-  --panel-3: rgba(255, 255, 255, 0.03);
-  --line: rgba(255, 255, 255, 0.08);
-  --line-soft: rgba(255, 255, 255, 0.04);
-  --text: #edf2f7;
-  --muted: #94a3b8;
-  --muted-2: #64748b;
-  --gold: #d4af37;
-  --gold-2: #f1cd61;
-  --blue: #2563eb;
-  --blue-2: #3b82f6;
-  --success: #22c55e;
-  --shadow: 0 22px 60px rgba(0,0,0,0.45);
-  --radius-xl: 22px;
-  --radius-lg: 16px;
-  --radius-md: 12px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  min-height: 100%;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(900px 500px at 8% 0%, rgba(212,175,55,0.09), transparent 55%),
-    radial-gradient(1100px 700px at 100% 0%, rgba(37,99,235,0.10), transparent 45%),
-    linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 34px 34px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.30), rgba(0,0,0,0.06));
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(255,255,255,0.02), transparent 25%),
-    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.015), transparent 20%);
-  animation: drift 20s linear infinite alternate;
-}
-
-@keyframes drift {
-  0% { transform: translate3d(0,0,0) scale(1); }
-  100% { transform: translate3d(0,-10px,0) scale(1.01); }
-}
-
-.shell {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 36px 22px 56px;
-}
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 18px 22px;
-  border: 1px solid var(--line);
-  background: rgba(7,14,26,0.72);
-  backdrop-filter: blur(18px);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  margin-bottom: 26px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-width: 0;
-}
-
-.logo-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  padding: 8px 10px;
-  border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  border: 1px solid rgba(212,175,55,0.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.03),
-    0 10px 24px rgba(0,0,0,0.35);
-}
-
-.logo-wrap img {
-  display: block;
-  height: 54px;
-  width: auto;
-  object-fit: contain;
-  filter:
-    drop-shadow(0 10px 24px rgba(0,0,0,0.45))
-    brightness(1.16)
-    contrast(1.08);
-}
-
-.brand-text {
-  min-width: 0;
-}
-
-.brand-title {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 750;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-}
-
-.brand-subtitle {
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 13px;
-  letter-spacing: 0.02em;
-}
-
-.brand-accent {
-  display: inline-block;
-  margin-top: 10px;
-  height: 2px;
-  width: 74px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-}
-
-.status-pill {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: 12px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.02);
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--success);
-  box-shadow: 0 0 16px rgba(34,197,94,0.55);
-}
-
-.dashboard {
-  display: grid;
-  grid-template-columns: 0.95fr 1.15fr;
-  gap: 24px;
-}
-
-.card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
-  background: var(--panel);
-  backdrop-filter: blur(18px);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 18px 20px;
-  border-bottom: 1px solid var(--line-soft);
-  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
-}
-
-.card-title {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 650;
-  color: var(--text);
-  letter-spacing: 0.01em;
-}
-
-.card-kicker {
-  color: var(--muted-2);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.form-row-full {
-  grid-column: 1 / -1;
-}
-
-.field-label {
-  display: block;
-  margin: 0 0 7px;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 0.03em;
-}
-
-.input,
-.select {
-  width: 100%;
-  border: 1px solid var(--line);
-  background: var(--panel-2);
-  color: var(--text);
-  border-radius: var(--radius-md);
-  padding: 13px 14px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
-}
-
-.input::placeholder {
-  color: #728198;
-}
-
-.input:focus,
-.select:focus {
-  border-color: rgba(212,175,55,0.65);
-  box-shadow: 0 0 0 4px rgba(212,175,55,0.10);
-  transform: translateY(-1px);
-}
-
-.controls {
-  display: flex;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.btn {
-  flex: 1;
-  border: none;
-  border-radius: 14px;
-  padding: 14px 16px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn-primary {
-  color: #081018;
-  background: linear-gradient(135deg, var(--gold-2), var(--gold));
-  box-shadow: 0 14px 34px rgba(212,175,55,0.24);
-}
-
-.btn-primary:hover {
-  box-shadow: 0 18px 42px rgba(212,175,55,0.32);
-}
-
-.btn-secondary {
-  color: white;
-  background: linear-gradient(135deg, var(--blue-2), var(--blue));
-  box-shadow: 0 14px 34px rgba(37,99,235,0.22);
-}
-
-.btn-secondary:hover {
-  box-shadow: 0 18px 42px rgba(37,99,235,0.30);
-}
-
-.btn-ghost {
-  flex: 0 0 auto;
-  min-width: 110px;
-  color: var(--muted);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--line);
-  box-shadow: none;
-}
-
-.meta-strip {
-  margin-top: 18px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.meta-box {
-  padding: 12px 12px 11px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.025);
-  border: 1px solid var(--line-soft);
-}
-
-.meta-label {
-  color: var(--muted-2);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.10em;
-  margin-bottom: 6px;
-}
-
-.meta-value {
-  font-size: 13px;
-  color: var(--text);
-}
-
-.output-wrap {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
-.output-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 16px;
-  border: 1px solid var(--line-soft);
-  border-radius: 16px 16px 0 0;
-  background: rgba(255,255,255,0.02);
-}
-
-.output-toolbar-left {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.output-toolbar-title {
-  font-size: 12px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.output-toolbar-subtitle {
-  font-size: 13px;
-  color: var(--text);
-}
-
-.output-status {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.output-panel {
-  flex: 1;
-  min-height: 420px;
-  border: 1px solid var(--line-soft);
-  border-top: none;
-  border-radius: 0 0 16px 16px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0)),
-    var(--panel-2);
-  padding: 18px 18px 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.output-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
-  background-size: 22px 22px;
-  opacity: 0.16;
-}
-
-.output {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  white-space: pre-wrap;
-  word-break: break-word;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 13.5px;
-  line-height: 1.72;
-  color: #e5edf8;
-}
-
-.footer-note {
-  margin-top: 12px;
-  color: var(--muted-2);
-  font-size: 12px;
-}
-
-.flash {
-  animation: flashFade 1.05s ease;
-}
-
-@keyframes flashFade {
-  0% { opacity: 0.55; }
-  100% { opacity: 1; }
-}
-
-@media (max-width: 980px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-
-  .output-panel {
-    min-height: 280px;
-  }
-}
-
-@media (max-width: 720px) {
-  .shell {
-    padding: 24px 14px 36px;
-  }
-
-  .topbar {
-    padding: 14px;
-    border-radius: 16px;
-  }
-
-  .brand-title {
-    font-size: 24px;
-  }
-
-  .dashboard {
-    gap: 18px;
-  }
-
-  .card-body {
-    padding: 16px;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .meta-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .controls {
-    flex-wrap: wrap;
-  }
-
-  .btn-ghost {
-    flex: 1 1 100%;
-  }
-
-  .logo-wrap img {
-    height: 44px;
-  }
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="shell">
 
-    <div class="topbar">
-      <div class="brand">
-        <div class="logo-wrap">
-          <img src="logo.png" alt="Capital Funds Services logo">
-        </div>
+<div class="wrapper">
 
-        <div class="brand-text">
-          <h1 class="brand-title">411 Pack</h1>
-          <div class="brand-subtitle">Property intelligence workflow for high-conviction analysis.</div>
-          <span class="brand-accent"></span>
-        </div>
-      </div>
-
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        Live workspace
-      </div>
-    </div>
-
-    <div class="dashboard">
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-kicker">Input</div>
-            <h2 class="card-title">Search Controls</h2>
-          </div>
-        </div>
-
-        <div class="card-body">
-          <div class="form-grid">
-            <div class="form-row-full">
-              <label class="field-label" for="address">Property Address</label>
-              <input id="address" class="input" placeholder="Enter full property address">
-            </div>
-
-            <div>
-              <label class="field-label" for="propertyType">Property Type</label>
-              <select id="propertyType" class="select">
-                <option>Residential (1-4 units)</option>
-                <option>Multifamily 5+</option>
-                <option>Commercial</option>
-                <option>Land</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="field-label" for="mode">Mode</label>
-              <select id="mode" class="select">
-                <option value="full">Full Report</option>
-                <option value="comps">Comps Only</option>
-              </select>
-            </div>
-
-            <div class="form-row-full">
-              <label class="field-label" for="notes">Notes</label>
-              <input id="notes" class="input" placeholder="Optional context or target price">
-            </div>
-          </div>
-
-          <div class="controls">
-            <button class="btn btn-primary" onclick="generate()">Run Report</button>
-            <button class="btn btn-secondary copy-btn" onclick="copyText()">Copy</button>
-            <button class="btn btn-ghost" onclick="clearFields()">Clear</button>
-          </div>
-
-          <div class="meta-strip">
-            <div class="meta-box">
-              <div class="meta-label">Style</div>
-              <div class="meta-value">Hedge fund dashboard</div>
-            </div>
-            <div class="meta-box">
-              <div class="meta-label">Workflow</div>
-              <div class="meta-value">Fast command generation</div>
-            </div>
-            <div class="meta-box">
-              <div class="meta-label">State</div>
-              <div class="meta-value" id="metaState">Awaiting input</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-kicker">Output</div>
-            <h2 class="card-title">Generated Command</h2>
-          </div>
-        </div>
-
-        <div class="card-body output-wrap">
-          <div class="output-toolbar">
-            <div class="output-toolbar-left">
-              <div class="output-toolbar-title">Command Panel</div>
-              <div class="output-toolbar-subtitle">Structured prompt ready for execution</div>
-            </div>
-            <div class="output-status" id="outputStatus">Ready</div>
-          </div>
-
-          <div class="output-panel" id="outputPanel">
-            <pre class="output" id="output">Ready...</pre>
-          </div>
-
-          <div class="footer-note">
-            Tip: Press Enter to generate. Copy sends the current command to your clipboard.
-          </div>
-        </div>
-      </section>
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" class="logo">
+    <div class="header-right">
+      <div class="title">411 Pack</div>
+      <div class="subtitle">Property intelligence workflow for high-conviction analysis.</div>
     </div>
   </div>
 
-<script>
-function normalizeAddress(address) {
-  return address.replace(/\s+/g, " ").trim();
-}
+  <!-- MAIN GRID -->
+  <div class="grid">
 
-function setMetaState(text) {
-  document.getElementById("metaState").innerText = text;
-}
+    <!-- LEFT PANEL -->
+    <div class="card">
 
-function setOutputStatus(text) {
-  document.getElementById("outputStatus").innerText = text;
-}
+      <div class="section-title">Search Controls</div>
 
-function setOutput(text) {
-  const output = document.getElementById("output");
-  const panel = document.getElementById("outputPanel");
-  output.innerText = text;
-  panel.classList.remove("flash");
-  void panel.offsetWidth;
-  panel.classList.add("flash");
-}
+      <label>Property Address</label>
+      <input id="address" placeholder="Street, City, State, Zip">
 
-function generate() {
-  const addressRaw = document.getElementById("address").value;
-  const propertyType = document.getElementById("propertyType").value;
-  const mode = document.getElementById("mode").value;
-  const notes = document.getElementById("notes").value.trim();
+      <div class="row">
+        <div>
+          <label>Property Type</label>
+          <select id="propertyType">
+            <option>Residential (1-4 units)</option>
+            <option>Multifamily 5+</option>
+            <option>Commercial</option>
+            <option>Land</option>
+          </select>
+        </div>
 
-  const address = normalizeAddress(addressRaw);
+        <div>
+          <label>Mode</label>
+          <select id="mode">
+            <option value="full">Full Report</option>
+            <option value="comps">Comps Only</option>
+          </select>
+        </div>
+      </div>
 
-  if (!address) {
-    setOutput("Enter a property address.");
-    setMetaState("Missing address");
-    setOutputStatus("Needs input");
-    return;
-  }
+      <label>Notes</label>
+      <input id="notes" placeholder="Optional context or target price">
 
-  let command = `Property search: ${address}\n`;
-  command += `Property type: ${propertyType.toLowerCase()}\n\n`;
+      <div class="button-row">
+        <button class="run" onclick="generate()">Run Report</button>
+        <button class="copy" onclick="copyText()">Copy</button>
+      </div>
 
-  if (mode === "full") {
-    command += `Pull full report + PA + taxes + comps.\n`;
-  } else {
-    command += `Run comps only.\n`;
-  }
+    </div>
 
-  if (notes) {
-    command += `\nNotes: ${notes}`;
-  }
+    <!-- RIGHT PANEL -->
+    <div class="card output">
 
-  setOutput(command);
-  setMetaState("Command ready");
-  setOutputStatus("Generated");
-}
+      <div class="section-title">Generated Command</div>
 
-function copyText() {
-  const output = document.getElementById("output").innerText;
-  if (!output || output === "Ready...") return;
+      <div id="output">Ready...</div>
 
-  navigator.clipboard.writeText(output);
+    </div>
 
-  const btn = document.querySelector(".copy-btn");
-  const original = btn.innerText;
-  btn.innerText = "Copied ✓";
-  setOutputStatus("Copied");
+  </div>
 
-  setTimeout(() => {
-    btn.innerText = original;
-    setOutputStatus("Ready");
-  }, 1100);
-}
+</div>
 
-function clearFields() {
-  document.getElementById("address").value = "";
-  document.getElementById("notes").value = "";
-  document.getElementById("output").innerText = "Ready...";
-  setMetaState("Awaiting input");
-  setOutputStatus("Ready");
-}
-
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Enter") {
-    generate();
-  }
-});
-</script>
+<script src="app.js"></script>
 </body>
 </html>
