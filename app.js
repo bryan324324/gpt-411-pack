@@ -1,18 +1,3 @@
-function typeText(text, element) {
-  element.innerText = "";
-  let i = 0;
-
-  function typing() {
-    if (i < text.length) {
-      element.innerText += text.charAt(i);
-      i++;
-      setTimeout(typing, 8);
-    }
-  }
-
-  typing();
-}
-
 function generate() {
   const address = document.getElementById("address").value.trim();
   const type = document.getElementById("propertyType").value;
@@ -43,9 +28,9 @@ function generate() {
   }
 
   setTimeout(() => {
-    typeText(command, output);
+    output.innerText = command;
     status.innerText = "READY";
-  }, 300);
+  }, 200);
 }
 
 function copyText() {
