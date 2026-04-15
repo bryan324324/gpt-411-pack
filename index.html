@@ -1,81 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f172a" />
-  <title>GPT 411 Pack</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>Capital Funds Services LLC – 411 Pack</title>
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="app-shell">
-    <header class="hero">
-      <div class="logo-block">
-        <div class="logo-mark">411</div>
-        <div>
-          <h1>GPT 411 Pack</h1>
-          <p>Fast property-report launcher for ChatGPT</p>
-        </div>
-      </div>
-    </header>
 
-    <main class="card">
-      <section class="section">
-        <label for="address">Property address</label>
-        <textarea id="address" rows="3" placeholder="108 Paradise Harbour Blvd #305, North Palm Beach, FL 33408"></textarea>
-      </section>
+<div class="container">
 
-      <section class="grid-2">
-        <div class="section">
-          <label for="propertyType">Property type</label>
-          <select id="propertyType">
-            <option value="Residential (1-4 units including condo, duplex, triplex, fourplex)" selected>Residential (1-4 units)</option>
-            <option value="Multifamily 5+ units">Multifamily 5+</option>
-            <option value="Commercial">Commercial</option>
-            <option value="Land">Land</option>
-          </select>
-        </div>
-
-        <div class="section">
-          <label for="mode">Mode</label>
-          <select id="mode">
-            <option value="full" selected>Full Report</option>
-            <option value="comps">Comps Only</option>
-          </select>
-        </div>
-      </section>
-
-      <section class="section">
-        <label for="notes">Notes (optional)</label>
-        <input id="notes" type="text" placeholder="ex: buyer considering offer at 472K" />
-      </section>
-
-      <section class="actions">
-        <button id="generateBtn" class="primary">Generate Command</button>
-        <button id="copyBtn" class="secondary">Copy</button>
-        <button id="openBtn" class="secondary">Open ChatGPT</button>
-        <button id="clearBtn" class="ghost">Clear</button>
-      </section>
-
-      <section class="section">
-        <label for="output">Command</label>
-        <textarea id="output" rows="8" readonly placeholder="Your command will appear here."></textarea>
-      </section>
-
-      <section class="tips">
-        <div>
-          <strong>Full Report</strong>
-          <span>Runs listing review, PA, taxes, conflicts, and comps.</span>
-        </div>
-        <div>
-          <strong>Comps Only</strong>
-          <span>Runs just the comp analysis for the subject property.</span>
-        </div>
-      </section>
-    </main>
+  <div class="header">
+    <div class="logo">411</div>
+    <div>
+      <h1>Capital Funds Services LLC</h1>
+      <p class="subtitle">411 Pack – Property Intelligence Tool</p>
+    </div>
   </div>
 
-  <script src="app.js"></script>
+  <div class="card">
+
+    <label>Property Address</label>
+    <input id="address" placeholder="Enter full property address">
+
+    <label>Property Type</label>
+    <select id="propertyType">
+      <option>Residential (1-4 units)</option>
+      <option>Multifamily 5+</option>
+      <option>Commercial</option>
+      <option>Land</option>
+    </select>
+
+    <label>Mode</label>
+    <select id="mode">
+      <option value="full">Full Report</option>
+      <option value="comps">Comps Only</option>
+    </select>
+
+    <label>Notes (optional)</label>
+    <input id="notes" placeholder="ex: buyer targeting 480K">
+
+    <div class="button-row">
+      <button class="run" onclick="runNow()">Run Now</button>
+      <button class="copy" onclick="copyCommand()">Copy</button>
+    </div>
+
+    <textarea id="output" placeholder="Command will appear here"></textarea>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
