@@ -1,56 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Capital Funds Services LLC – 411 Pack</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Capital Funds Services LLC – 411 Pack</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="header">
-    <div class="logo">411</div>
-    <div>
-      <h1>Capital Funds Services LLC</h1>
-      <p class="subtitle">411 Pack – Property Intelligence Tool</p>
-    </div>
-  </div>
-
-  <div class="card">
-
-    <label>Property Address</label>
-    <input id="address" placeholder="Enter full property address">
-
-    <label>Property Type</label>
-    <select id="propertyType">
-      <option>Residential (1-4 units)</option>
-      <option>Multifamily 5+</option>
-      <option>Commercial</option>
-      <option>Land</option>
-    </select>
-
-    <label>Mode</label>
-    <select id="mode">
-      <option value="full">Full Report</option>
-      <option value="comps">Comps Only</option>
-    </select>
-
-    <label>Notes (optional)</label>
-    <input id="notes" placeholder="ex: buyer targeting 480K">
-
-    <div class="button-row">
-      <button class="run" onclick="runNow()">Run Now</button>
-      <button class="copy" onclick="copyCommand()">Copy</button>
+    <div class="header">
+      <div class="logo">411</div>
+      <div>
+        <h1>Capital Funds Services LLC</h1>
+        <p class="subtitle">411 Pack – Property Intelligence Tool</p>
+      </div>
     </div>
 
-    <textarea id="output" placeholder="Command will appear here"></textarea>
+    <div class="card">
+
+      <div class="grid">
+
+        <!-- LEFT PANEL -->
+        <div class="panel">
+
+          <label>Property Address</label>
+          <input id="address" placeholder="Enter full property address">
+
+          <label>Property Type</label>
+          <select id="propertyType">
+            <option>Residential (1-4 units)</option>
+            <option>Multifamily 5+</option>
+            <option>Commercial</option>
+            <option>Land</option>
+          </select>
+
+          <label>Mode</label>
+          <select id="mode">
+            <option value="full">Full Report</option>
+            <option value="comps">Comps Only</option>
+          </select>
+
+          <label>Notes (optional)</label>
+          <input id="notes" placeholder="ex: buyer targeting 480K">
+
+          <div class="buttons">
+            <button class="run" onclick="generate()">Run Report</button>
+            <button class="copy" onclick="copyText()">Copy</button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="panel output-panel">
+
+          <div class="output-header">
+            Generated Command
+          </div>
+
+          <div id="output" class="output">
+            Your command will appear here.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
-</div>
+  <script src="app.js"></script>
 
-<script src="app.js"></script>
 </body>
 </html>
