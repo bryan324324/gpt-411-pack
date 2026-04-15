@@ -1,9 +1,8 @@
-/* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 body {
   margin: 0;
-  background: linear-gradient(180deg, #06101f 0%, #02060c 100%);
+  background: linear-gradient(180deg, #050b14 0%, #010409 100%);
   font-family: 'Inter', sans-serif;
   color: #e6edf3;
 }
@@ -13,22 +12,24 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 28px 60px;
+  padding: 30px 60px;
 }
 
 /* LEFT */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
 }
 
-/* LOGO — FIXED */
+/* LOGO — REAL PREMIUM EFFECT */
 .logo {
-  height: 64px;
-  width: auto;
-  opacity: 1;
-  filter: brightness(1.2) contrast(1.2);
+  height: 72px;
+  filter:
+    brightness(1.25)
+    contrast(1.2)
+    drop-shadow(0 0 12px rgba(255,200,80,0.25))
+    drop-shadow(0 0 30px rgba(0,0,0,0.7));
 }
 
 /* TITLE */
@@ -58,10 +59,11 @@ body {
 
 /* PANELS */
 .panel {
-  background: #0a1626;
+  background: #0b1626;
   border-radius: 14px;
-  padding: 20px;
-  border: 1px solid rgba(255,255,255,0.05);
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
 /* LEFT / RIGHT */
@@ -79,7 +81,7 @@ label {
 /* INPUTS */
 input, select {
   width: 100%;
-  padding: 12px;
+  padding: 13px;
   border-radius: 8px;
   border: none;
   background: #02060c;
@@ -119,7 +121,7 @@ button {
   color: white;
 }
 
-/* OUTPUT HEADER */
+/* OUTPUT */
 .output-header {
   display: flex;
   justify-content: space-between;
@@ -132,12 +134,11 @@ button {
   color: #00ff95;
 }
 
-/* OUTPUT BOX */
 .output-box {
   background: #000;
   border-radius: 10px;
   padding: 16px;
-  min-height: 220px;
+  min-height: 240px;
   font-size: 13px;
   line-height: 1.5;
 }
