@@ -1,30 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-:root {
-  --bg: #050a14;
-  --panel: rgba(12, 24, 42, 0.85);
-  --border: rgba(255,255,255,0.06);
-  --text: #e6edf3;
-  --muted: #8fa3b8;
-  --gold: #f5c542;
-  --blue: #3b82f6;
-  --green: #00ff95;
-}
-
-/* BASE */
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(40,90,180,0.12), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(0,120,255,0.08), transparent 40%),
-    var(--bg);
+  background: linear-gradient(180deg, #06101f 0%, #02060c 100%);
   font-family: 'Inter', sans-serif;
-  color: var(--text);
-}
-
-/* REMOVE HARSH GRID (FIXES GRAPH PAPER LOOK) */
-body::after {
-  display: none;
+  color: #e6edf3;
 }
 
 /* HEADER */
@@ -32,65 +13,55 @@ body::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 34px 70px;
+  padding: 28px 60px;
 }
 
 /* LEFT */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
 }
 
-/* LOGO — FIXED VISIBILITY */
+/* LOGO — FIXED */
 .logo {
-  height: 78px; /* bigger */
+  height: 64px;
   width: auto;
   opacity: 1;
-  filter:
-    brightness(1.15)
-    contrast(1.15)
-    drop-shadow(0 0 14px rgba(245,197,66,0.25))
-    drop-shadow(0 0 40px rgba(0,0,0,0.8));
+  filter: brightness(1.2) contrast(1.2);
 }
 
 /* TITLE */
 .title-block h1 {
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  letter-spacing: 0.6px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .subtitle {
-  font-size: 13px;
-  color: var(--muted);
+  font-size: 12px;
+  color: #8fa3b8;
 }
 
 /* STATUS */
 .status {
   font-size: 12px;
-  color: var(--green);
-  letter-spacing: 1.2px;
+  color: #00ff95;
 }
 
 /* LAYOUT */
 .container {
   display: flex;
-  gap: 30px;
-  padding: 10px 70px 70px;
+  gap: 24px;
+  padding: 0 60px 60px;
 }
 
 /* PANELS */
 .panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 26px;
-  backdrop-filter: blur(10px);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.6),
-    inset 0 0 30px rgba(255,255,255,0.02);
+  background: #0a1626;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 /* LEFT / RIGHT */
@@ -100,71 +71,52 @@ body::after {
 /* LABELS */
 label {
   font-size: 11px;
-  color: var(--muted);
+  color: #7f92a8;
   margin-bottom: 6px;
   display: block;
-  letter-spacing: 0.4px;
 }
 
 /* INPUTS */
 input, select {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.05);
-  background: #030812;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #02060c;
   color: white;
   margin-bottom: 14px;
   font-size: 13px;
-  transition: all 0.2s ease;
 }
 
 input:focus, select:focus {
   outline: none;
-  border-color: var(--blue);
-  box-shadow:
-    0 0 0 1px rgba(59,130,246,0.4),
-    0 0 12px rgba(59,130,246,0.25);
+  box-shadow: 0 0 0 1px #3b82f6;
 }
 
 /* BUTTONS */
 .button-row {
   display: flex;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 10px;
 }
 
 button {
-  border-radius: 10px;
-  padding: 13px 20px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
   font-weight: 600;
   cursor: pointer;
-  border: none;
-  transition: all 0.2s ease;
 }
 
 /* RUN */
 .run {
-  background: linear-gradient(135deg, #ffd84d, #f5c542);
+  background: #ffd84d;
   color: black;
-  box-shadow: 0 6px 24px rgba(245,197,66,0.35);
-}
-
-.run:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 35px rgba(245,197,66,0.5);
 }
 
 /* COPY */
 .copy {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: #3b82f6;
   color: white;
-  box-shadow: 0 6px 24px rgba(59,130,246,0.35);
-}
-
-.copy:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 35px rgba(59,130,246,0.5);
 }
 
 /* OUTPUT HEADER */
@@ -172,27 +124,22 @@ button {
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 12px;
+  color: #8fa3b8;
+  margin-bottom: 10px;
 }
 
 .ready {
-  color: var(--green);
+  color: #00ff95;
 }
 
 /* OUTPUT BOX */
 .output-box {
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,1));
-  border-radius: 12px;
-  padding: 20px;
-  min-height: 260px;
+  background: #000;
+  border-radius: 10px;
+  padding: 16px;
+  min-height: 220px;
   font-size: 13px;
-  line-height: 1.6;
-  color: #d9e2ec;
-  box-shadow:
-    inset 0 0 25px rgba(0,0,0,0.9),
-    0 0 12px rgba(0,0,0,0.6);
+  line-height: 1.5;
 }
 
 /* RESPONSIVE */
