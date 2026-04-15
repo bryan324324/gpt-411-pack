@@ -1,151 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
 body {
   margin: 0;
-  background: linear-gradient(180deg, #050b14 0%, #010409 100%);
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
+  background: radial-gradient(circle at top, #081826, #02070d);
   color: #e6edf3;
 }
 
 /* HEADER */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 30px 60px;
+  gap: 16px;
+  padding: 24px 40px;
 }
 
-/* LEFT */
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.logo-wrap {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* LOGO — REAL PREMIUM EFFECT */
 .logo {
-  height: 72px;
+  height: 90px;
+
   filter:
-    brightness(1.25)
-    contrast(1.2)
-    drop-shadow(0 0 12px rgba(255,200,80,0.25))
-    drop-shadow(0 0 30px rgba(0,0,0,0.7));
+    brightness(1.4)
+    contrast(1.3)
+    saturate(1.2)
+    drop-shadow(0 0 14px rgba(255, 200, 80, 0.45))
+    drop-shadow(0 3px 8px rgba(0,0,0,0.9));
 }
 
-/* TITLE */
 .title-block h1 {
   margin: 0;
+  font-family: Playfair Display, serif;
   font-size: 22px;
-  font-weight: 600;
 }
 
-.subtitle {
+.title-block p {
+  margin: 2px 0 0;
   font-size: 12px;
-  color: #8fa3b8;
+  color: #8aa0b6;
 }
 
-/* STATUS */
 .status {
+  margin-left: auto;
+  color: #00ff88;
   font-size: 12px;
-  color: #00ff95;
 }
 
-/* LAYOUT */
-.container {
-  display: flex;
-  gap: 24px;
-  padding: 0 60px 60px;
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 20px 40px 60px;
 }
 
-/* PANELS */
-.panel {
-  background: #0b1626;
+/* CARDS */
+.card {
+  background: linear-gradient(145deg, #071520, #030b12);
+  border: 1px solid rgba(255,255,255,0.06);
   border-radius: 14px;
-  padding: 22px;
-  border: 1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  padding: 20px;
 }
 
-/* LEFT / RIGHT */
-.left { flex: 1; }
-.right { flex: 1.1; }
-
-/* LABELS */
-label {
+.card-label {
   font-size: 11px;
-  color: #7f92a8;
-  margin-bottom: 6px;
-  display: block;
+  color: #6f8599;
+  margin-bottom: 10px;
 }
 
 /* INPUTS */
 input, select {
   width: 100%;
-  padding: 13px;
+  margin-bottom: 14px;
+  padding: 12px;
   border-radius: 8px;
   border: none;
-  background: #02060c;
+  background: #02070d;
   color: white;
-  margin-bottom: 14px;
-  font-size: 13px;
 }
 
-input:focus, select:focus {
-  outline: none;
-  box-shadow: 0 0 0 1px #3b82f6;
-}
-
-/* BUTTONS */
-.button-row {
+.row {
   display: flex;
   gap: 10px;
 }
 
-button {
-  padding: 12px 18px;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 10px;
 }
 
-/* RUN */
 .run {
-  background: #ffd84d;
-  color: black;
+  background: #f5c542;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
-/* COPY */
 .copy {
-  background: #3b82f6;
+  background: #3b6fe0;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
   color: white;
 }
 
 /* OUTPUT */
+pre {
+  background: black;
+  padding: 16px;
+  border-radius: 10px;
+  min-height: 200px;
+}
+
+/* STATUS */
 .output-header {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
-  color: #8fa3b8;
   margin-bottom: 10px;
 }
 
 .ready {
-  color: #00ff95;
+  color: #00ff88;
 }
 
-.output-box {
-  background: #000;
-  border-radius: 10px;
-  padding: 16px;
-  min-height: 240px;
-  font-size: 13px;
-  line-height: 1.5;
+/* HOTKEYS */
+.hotkeys {
+  font-size: 11px;
+  color: #6f8599;
+  margin-top: 10px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1000px) {
-  .container {
-    flex-direction: column;
-  }
+/* HISTORY */
+.history {
+  margin-top: 20px;
+}
+
+.history-title {
+  font-size: 11px;
+  margin-bottom: 6px;
+  color: #6f8599;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history li {
+  font-size: 12px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  color: #9fb3c8;
 }
