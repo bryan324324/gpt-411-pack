@@ -1,55 +1,44 @@
-const addressEl = document.getElementById('address');
-const typeEl = document.getElementById('propertyType');
-const modeEl = document.getElementById('mode');
-const notesEl = document.getElementById('notes');
-const outputEl = document.getElementById('output');
-
-function generateCommand() {
-  const address = addressEl.value.trim();
-  const propertyType = typeEl.value;
-  const mode = modeEl.value;
-  const notes = notesEl.value.trim();
+function generate() {
+  const address = document.getElementById("address").value.trim();
+  const type = document.getElementById("propertyType").value;
+  const mode = document.getElementById("mode").value;
+  const notes = document.getElementById("notes").value.trim();
 
   if (!address) {
-    alert('Enter an address first.');
-    addressEl.focus();
+    setOutput("Enter address");
     return;
   }
 
-  const header = mode === 'full' ? 'Run full report:' : 'Run comps only:';
-  const lines = [header, address, propertyType];
+  let cmd = `Property search: ${address}\n`;
+  cmd += `Property type: ${type.toLowerCase()}\n\n`;
 
-  if (notes) {
-    lines.push(`Notes: ${notes}`);
+  if (mode === "full") {
+    cmd += `Pull full report + PA + taxes + comps.\n`;
+  } else {
+    cmd += `Run comps only.\n`;
   }
 
-  outputEl.value = lines.join('\n');
+  if (notes) cmd += `\nNotes: ${notes}`;
+
+  setOutput(cmd);
 }
 
-function copyCommand() {
-  if (!outputEl.value.trim()) {
-    generateCommand();
-  }
-  outputEl.focus();
-  outputEl.select();
-  outputEl.setSelectionRange(0, 99999);
-  document.execCommand('copy');
+function setOutput(text) {
+  document.getElementById("output").innerText = text;
 }
 
-function openChatGPT() {
-  window.open('https://chatgpt.com/', '_blank', 'noopener,noreferrer');
+function copyText() {
+  const text = document.getElementById("output").innerText;
+  navigator.clipboard.writeText(text);
+
+  const btn = document.querySelector(".copy");
+  btn.innerText = "Copied ✓";
+
+  setTimeout(() => {
+    btn.innerText = "Copy";
+  }, 1000);
 }
 
-function clearAll() {
-  addressEl.value = '';
-  notesEl.value = '';
-  modeEl.value = 'full';
-  typeEl.value = 'Residential (1-4 units including condo, duplex, triplex, fourplex)';
-  outputEl.value = '';
-  addressEl.focus();
-}
-
-document.getElementById('generateBtn').addEventListener('click', generateCommand);
-document.getElementById('copyBtn').addEventListener('click', copyCommand);
-document.getElementById('openBtn').addEventListener('click', openChatGPT);
-document.getElementById('clearBtn').addEventListener('click', clearAll);
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") generate();
+});
