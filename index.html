@@ -8,62 +8,62 @@
 
 <body>
 
+<div class="ambient"></div>
+
 <div class="wrapper">
 
-  <!-- HEADER -->
   <div class="header">
     <img src="logo.png" class="logo">
-    <div class="header-right">
+
+    <div class="header-text">
       <div class="title">411 Pack</div>
-      <div class="subtitle">Property intelligence workflow for high-conviction analysis.</div>
+      <div class="subtitle">Investor Command Terminal</div>
+    </div>
+
+    <div class="live">
+      <span class="pulse"></span> LIVE
     </div>
   </div>
 
-  <!-- MAIN GRID -->
   <div class="grid">
 
-    <!-- LEFT PANEL -->
-    <div class="card">
+    <div class="panel">
 
-      <div class="section-title">Search Controls</div>
+      <div class="label">INPUT</div>
 
-      <label>Property Address</label>
       <input id="address" placeholder="Street, City, State, Zip">
 
       <div class="row">
-        <div>
-          <label>Property Type</label>
-          <select id="propertyType">
-            <option>Residential (1-4 units)</option>
-            <option>Multifamily 5+</option>
-            <option>Commercial</option>
-            <option>Land</option>
-          </select>
-        </div>
+        <select id="propertyType">
+          <option>Residential (1-4 units)</option>
+          <option>Multifamily 5+</option>
+          <option>Commercial</option>
+          <option>Land</option>
+        </select>
 
-        <div>
-          <label>Mode</label>
-          <select id="mode">
-            <option value="full">Full Report</option>
-            <option value="comps">Comps Only</option>
-          </select>
-        </div>
+        <select id="mode">
+          <option value="full">Full Report</option>
+          <option value="comps">Comps Only</option>
+        </select>
       </div>
 
-      <label>Notes</label>
-      <input id="notes" placeholder="Optional context or target price">
+      <input id="notes" placeholder="Optional context">
 
-      <div class="button-row">
-        <button class="run" onclick="generate()">Run Report</button>
-        <button class="copy" onclick="copyText()">Copy</button>
+      <div class="buttons">
+        <button class="run" onclick="generate()">RUN</button>
+        <button class="copy" onclick="copyText()">COPY</button>
       </div>
 
     </div>
 
-    <!-- RIGHT PANEL -->
-    <div class="card output">
+    <div class="panel terminal">
 
-      <div class="section-title">Generated Command</div>
+      <div class="label">OUTPUT</div>
+
+      <div class="terminal-header">
+        <span>Structured Execution</span>
+        <span id="status">READY</span>
+      </div>
 
       <div id="output">Ready...</div>
 
