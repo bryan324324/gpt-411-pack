@@ -5,16 +5,17 @@ function generate() {
   const notes = document.getElementById("notes").value.trim();
 
   if (!address) {
-    setOutput("Enter full address: Street, City, State, Zip");
+    setOutput("Enter full address (must include City, State, Zip)");
     return;
   }
 
-  // SMART VALIDATION (not comma-dependent)
-  const hasStateZip = /[A-Z]{2}\s\d{5}$/.test(address);
-  const hasCity = address.split(" ").length >= 5;
+  // SMART VALIDATION
+  const hasZip = /\d{5}$/.test(address);
+  const hasState = /[A-Z]{2}/.test(address);
+  const hasEnoughWords = address.split(" ").length >= 5;
 
-  if (!hasStateZip || !hasCity) {
-    setOutput("Enter valid address format (must include City, State, Zip)");
+  if (!hasZip || !hasState || !hasEnoughWords) {
+    setOutput("Enter valid address including City, State, Zip");
     return;
   }
 
