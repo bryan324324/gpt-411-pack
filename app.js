@@ -5,7 +5,12 @@ function generate() {
   const notes = document.getElementById("notes").value.trim();
 
   if (!address) {
-    setOutput("Enter address");
+    setOutput("Enter full address: Street, City, State, Zip");
+    return;
+  }
+
+  if (!address.includes(",") || address.split(",").length < 3) {
+    setOutput("Enter full address format: Street, City, State, Zip");
     return;
   }
 
@@ -18,7 +23,9 @@ function generate() {
     cmd += `Run comps only.\n`;
   }
 
-  if (notes) cmd += `\nNotes: ${notes}`;
+  if (notes) {
+    cmd += `\nNotes: ${notes}`;
+  }
 
   setOutput(cmd);
 }
@@ -29,14 +36,18 @@ function setOutput(text) {
 
 function copyText() {
   const text = document.getElementById("output").innerText;
+  if (!text || text === "Ready...") return;
+
   navigator.clipboard.writeText(text);
 
   const btn = document.querySelector(".copy");
   btn.innerText = "Copied ✓";
+  btn.style.opacity = "0.7";
 
   setTimeout(() => {
     btn.innerText = "Copy";
-  }, 1000);
+    btn.style.opacity = "1";
+  }, 1200);
 }
 
 document.addEventListener("keydown", function(e) {
