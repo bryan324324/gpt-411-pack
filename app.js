@@ -9,8 +9,12 @@ function generate() {
     return;
   }
 
-  if (!address.includes(",") || address.split(",").length < 3) {
-    setOutput("Enter full address format: Street, City, State, Zip");
+  // SMART VALIDATION (not comma-dependent)
+  const hasStateZip = /[A-Z]{2}\s\d{5}$/.test(address);
+  const hasCity = address.split(" ").length >= 5;
+
+  if (!hasStateZip || !hasCity) {
+    setOutput("Enter valid address format (must include City, State, Zip)");
     return;
   }
 
