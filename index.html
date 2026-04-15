@@ -1,69 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>411 Pack</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>411 Pack — Investor Terminal</title>
+
+  <!-- Premium fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-<div class="header">
-  <div class="header-left">
-    <img src="logo.png" class="logo">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-wrap">
+      <img src="logo.png" class="logo" />
+    </div>
+
     <div class="title-block">
       <h1>411 Pack</h1>
-      <div class="subtitle">Investor Command Terminal</div>
-    </div>
-  </div>
-  <div class="status">● LIVE</div>
-</div>
-
-<div class="container">
-
-  <!-- LEFT PANEL -->
-  <div class="panel left">
-
-    <label>INPUT</label>
-
-    <input id="address" placeholder="Street, City, State, Zip">
-
-    <select id="propertyType">
-      <option>Residential (1-4 units)</option>
-      <option>Multifamily 5+</option>
-      <option>Commercial</option>
-      <option>Land</option>
-    </select>
-
-    <select id="mode">
-      <option value="full">Full Report</option>
-      <option value="comps">Comps Only</option>
-    </select>
-
-    <input id="notes" placeholder="Optional context">
-
-    <div class="button-row">
-      <button class="run" onclick="generate()">RUN</button>
-      <button class="copy" onclick="copyText()">COPY</button>
+      <p>Investor Command Terminal</p>
     </div>
 
-  </div>
+    <div class="status">● LIVE</div>
+  </header>
 
-  <!-- RIGHT PANEL -->
-  <div class="panel right">
+  <!-- MAIN -->
+  <main class="grid">
 
-    <div class="output-header">
-      <span>OUTPUT</span>
-      <span class="ready" id="statusText">READY</span>
-    </div>
+    <!-- INPUT -->
+    <section class="card">
+      <div class="card-label">INPUT</div>
 
-    <div id="output" class="output-box">Ready...</div>
+      <input id="address" placeholder="Street, City, State, Zip" />
 
-  </div>
+      <div class="row">
+        <select id="propertyType">
+          <option>Residential (1-4 units)</option>
+          <option>Multifamily 5+</option>
+          <option>Commercial</option>
+          <option>Land</option>
+        </select>
 
-</div>
+        <select id="mode">
+          <option value="full">Full Report</option>
+          <option value="comps">Comps Only</option>
+        </select>
+      </div>
 
-<script src="app.js"></script>
+      <input id="notes" placeholder="Optional context" />
 
+      <div class="buttons">
+        <button class="run" onclick="generate()">RUN</button>
+        <button class="copy" onclick="copyText()">COPY</button>
+      </div>
+
+      <div class="hotkeys">
+        ENTER = Run • SHIFT+ENTER = Launch ChatGPT
+      </div>
+
+      <!-- HISTORY -->
+      <div class="history">
+        <div class="history-title">Command History</div>
+        <ul id="historyList"></ul>
+      </div>
+
+    </section>
+
+    <!-- OUTPUT -->
+    <section class="card">
+      <div class="card-label">OUTPUT</div>
+
+      <div class="output-header">
+        <span>Structured Execution READY</span>
+        <span class="ready">READY</span>
+      </div>
+
+      <pre id="output">Ready...</pre>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
