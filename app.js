@@ -1,100 +1,64 @@
+function typeText(text, element) {
+  element.innerText = "";
+  let i = 0;
+
+  function typing() {
+    if (i < text.length) {
+      element.innerText += text.charAt(i);
+      i++;
+      setTimeout(typing, 8);
+    }
+  }
+
+  typing();
+}
+
 function generate() {
-  let address = document.getElementById("address").value.trim();
+  const address = document.getElementById("address").value.trim();
   const type = document.getElementById("propertyType").value;
   const mode = document.getElementById("mode").value;
   const notes = document.getElementById("notes").value.trim();
 
+  const output = document.getElementById("output");
+  const status = document.getElementById("status");
+
   if (!address) {
-    setOutput("Enter full address (Street, City, State, Zip)");
+    output.innerText = "Enter address.";
     return;
   }
 
-  address = normalizeAddress(address);
+  status.innerText = "PROCESSING";
 
-  const hasZip = /\d{5}$/.test(address);
-  const hasState = /[A-Z]{2}/.test(address);
-
-  if (!hasZip || !hasState) {
-    setOutput("Address must include City, State, Zip");
-    return;
-  }
-
-  let cmd = `Property search: ${address}\n`;
-  cmd += `Property type: ${type.toLowerCase()}\n\n`;
+  let command = `Property search: ${address}\n`;
+  command += `Property type: ${type.toLowerCase()}\n\n`;
 
   if (mode === "full") {
-    cmd += `Pull ALL fields from Zillow, Redfin, Realtor.com, Trulia, County PA, and Tax Collector:\n\n`;
-    cmd += `– List price, DOM, beds/baths, sqft, lot size, year built\n`;
-    cmd += `– HOA (amount + frequency), taxes, flood zone\n`;
-    cmd += `– Owner name(s), mailing address\n`;
-    cmd += `– Listing history + price changes\n`;
-    cmd += `– Agent name, brokerage, phone\n\n`;
-    cmd += `Run comps:\n`;
-    cmd += `– 3-5 recent closed sales\n`;
-    cmd += `– Adjusted value analysis\n`;
-    cmd += `– Price per sqft comparison\n\n`;
-    cmd += `Flag:\n`;
-    cmd += `– Overpriced / underpriced\n`;
-    cmd += `– Financing risks\n`;
-    cmd += `– Red flags\n`;
+    command += "Pull full report + PA + taxes + comps.\n";
   } else {
-    cmd += `Run comps only:\n\n`;
-    cmd += `– 3-5 recent closed sales\n`;
-    cmd += `– Adjusted value\n`;
-    cmd += `– Price per sqft\n`;
-    cmd += `– Range of value\n`;
+    command += "Run comps only.\n";
   }
 
   if (notes) {
-    cmd += `\nNotes: ${notes}`;
+    command += `\nNotes: ${notes}`;
   }
 
-  setOutput(cmd);
-
-  // AUTO OPEN CHATGPT WITH PREFILLED COMMAND
-  openChatGPT(cmd);
+  setTimeout(() => {
+    typeText(command, output);
+    status.innerText = "READY";
+  }, 300);
 }
 
-/* NORMALIZE ADDRESS */
-function normalizeAddress(input) {
-  let addr = input.toUpperCase();
-
-  addr = addr.replace(/\s+/g, " ").trim();
-
-  return addr;
-}
-
-/* OUTPUT */
-function setOutput(text) {
-  document.getElementById("output").innerText = text;
-}
-
-/* COPY */
 function copyText() {
-  const text = document.getElementById("output").innerText;
-  if (!text || text === "Ready...") return;
-
-  navigator.clipboard.writeText(text);
+  const output = document.getElementById("output").innerText;
+  navigator.clipboard.writeText(output);
 
   const btn = document.querySelector(".copy");
-  btn.innerText = "Copied ✓";
-  btn.style.opacity = "0.7";
+  const original = btn.innerText;
 
-  setTimeout(() => {
-    btn.innerText = "Copy";
-    btn.style.opacity = "1";
-  }, 1200);
+  btn.innerText = "COPIED";
+  setTimeout(() => btn.innerText = original, 1000);
 }
 
-/* OPEN CHATGPT */
-function openChatGPT(text) {
-  const encoded = encodeURIComponent(text);
-  const url = `https://chat.openai.com/?q=${encoded}`;
-
-  window.open(url, "_blank");
-}
-
-/* ENTER = RUN */
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") generate();
 });
