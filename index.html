@@ -8,71 +8,62 @@
 
 <body>
 
-<div class="wrapper">
-
-  <div class="header">
+<div class="header">
+  <div class="header-left">
     <img src="logo.png" class="logo">
-
-    <div class="header-text">
-      <div class="title">411 Pack</div>
+    <div class="title-block">
+      <h1>411 Pack</h1>
       <div class="subtitle">Investor Command Terminal</div>
     </div>
+  </div>
+  <div class="status">● LIVE</div>
+</div>
 
-    <div class="live">
-      <span class="dot"></span> LIVE
+<div class="container">
+
+  <!-- LEFT PANEL -->
+  <div class="panel left">
+
+    <label>INPUT</label>
+
+    <input id="address" placeholder="Street, City, State, Zip">
+
+    <select id="propertyType">
+      <option>Residential (1-4 units)</option>
+      <option>Multifamily 5+</option>
+      <option>Commercial</option>
+      <option>Land</option>
+    </select>
+
+    <select id="mode">
+      <option value="full">Full Report</option>
+      <option value="comps">Comps Only</option>
+    </select>
+
+    <input id="notes" placeholder="Optional context">
+
+    <div class="button-row">
+      <button class="run" onclick="generate()">RUN</button>
+      <button class="copy" onclick="copyText()">COPY</button>
     </div>
+
   </div>
 
-  <div class="grid">
+  <!-- RIGHT PANEL -->
+  <div class="panel right">
 
-    <!-- INPUT -->
-    <div class="panel">
-
-      <div class="panel-label">INPUT</div>
-
-      <input id="address" placeholder="Street, City, State, Zip">
-
-      <div class="row">
-        <select id="propertyType">
-          <option>Residential (1-4 units)</option>
-          <option>Multifamily 5+</option>
-          <option>Commercial</option>
-          <option>Land</option>
-        </select>
-
-        <select id="mode">
-          <option value="full">Full Report</option>
-          <option value="comps">Comps Only</option>
-        </select>
-      </div>
-
-      <input id="notes" placeholder="Optional context">
-
-      <div class="buttons">
-        <button class="run" onclick="generate()">RUN</button>
-        <button class="copy" onclick="copyText()">COPY</button>
-      </div>
-
+    <div class="output-header">
+      <span>OUTPUT</span>
+      <span class="ready" id="statusText">READY</span>
     </div>
 
-    <!-- OUTPUT -->
-    <div class="panel terminal">
-
-      <div class="panel-label">OUTPUT</div>
-
-      <div class="terminal-top">
-        <span>Structured Execution</span>
-        <span id="status">READY</span>
-      </div>
-
-      <div id="output">Ready...</div>
-
-    </div>
+    <div id="output" class="output-box">Ready...</div>
 
   </div>
 
 </div>
 
 <script src="app.js"></script>
+
 </body>
 </html>
