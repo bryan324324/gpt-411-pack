@@ -1,83 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bryan's Property Analyzer</title>
+  <title>Bryan's Property Analyzer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  <!-- HEADER -->
-  <div class="header">
+    <!-- HEADER -->
+    <div class="header">
 
-    <!-- LEFT: LOGO -->
-    <div class="brand-left">
-      <img src="logo.png" class="logo">
-    </div>
+      <div class="logo-wrap">
+        <img src="logo.png" class="logo">
+      </div>
 
-    <!-- CENTER: NEW BRAND -->
-    <div class="brand-center">
+      <div class="brand">
+        Bryan’s Property Analyzer
+      </div>
 
-      <div class="brand-stack">
-        <div class="brand-main">Bryan’s Property Analyzer</div>
-        <div class="brand-sub">INVESTOR COMMAND TERMINAL</div>
+      <div class="status">
+        <span class="dot"></span>
+        <span>LIVE</span>
       </div>
 
     </div>
 
-    <!-- RIGHT: STATUS -->
-    <div class="brand-right">
-      <span class="live-dot"></span>
-      <span class="live-text">LIVE</span>
-    </div>
+    <!-- MAIN -->
+    <div class="main">
 
-  </div>
+      <!-- INPUT PANEL -->
+      <div class="panel left">
 
-  <!-- MAIN -->
-  <div class="main">
+        <div class="label">INPUT</div>
 
-    <div class="panel left">
-      <div class="panel-title">INPUT</div>
+        <input id="address" placeholder="Street, City, State, Zip">
 
-      <input id="address" placeholder="Street, City, State, Zip">
+        <select id="propertyType">
+          <option>Residential (1-4 units)</option>
+          <option>Multifamily 5+</option>
+          <option>Commercial</option>
+          <option>Land</option>
+        </select>
 
-      <select id="propertyType">
-        <option>Residential (1-4 units)</option>
-        <option>Multifamily 5+</option>
-        <option>Commercial</option>
-        <option>Land</option>
-      </select>
+        <select id="mode">
+          <option value="full">Full Report</option>
+          <option value="comps">Comps Only</option>
+        </select>
 
-      <select id="mode">
-        <option value="full">Full Report</option>
-        <option value="comps">Comps Only</option>
-      </select>
+        <input id="notes" placeholder="Optional context">
 
-      <input id="notes" placeholder="Optional context">
+        <div class="buttons">
+          <button class="run" onclick="generateAndLaunch()">RUN</button>
+          <button class="copy" onclick="copyText()">COPY</button>
+        </div>
 
-      <div class="buttons">
-        <button class="run" onclick="generate()">RUN</button>
-        <button class="copy" onclick="copyText()">COPY</button>
       </div>
-    </div>
 
-    <div class="panel right">
-      <div class="panel-title">OUTPUT</div>
-      <pre id="output">Ready...</pre>
+      <!-- OUTPUT PANEL -->
+      <div class="panel right">
+
+        <div class="label">OUTPUT</div>
+
+        <pre id="output">Ready...</pre>
+
+      </div>
+
     </div>
 
   </div>
 
-</div>
+  <script src="app.js"></script>
 
-<script src="app.js"></script>
 </body>
 </html>
