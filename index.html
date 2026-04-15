@@ -8,8 +8,6 @@
 
 <body>
 
-<div class="ambient"></div>
-
 <div class="wrapper">
 
   <div class="header">
@@ -21,15 +19,16 @@
     </div>
 
     <div class="live">
-      <span class="pulse"></span> LIVE
+      <span class="dot"></span> LIVE
     </div>
   </div>
 
   <div class="grid">
 
+    <!-- INPUT -->
     <div class="panel">
 
-      <div class="label">INPUT</div>
+      <div class="panel-label">INPUT</div>
 
       <input id="address" placeholder="Street, City, State, Zip">
 
@@ -56,11 +55,12 @@
 
     </div>
 
+    <!-- OUTPUT -->
     <div class="panel terminal">
 
-      <div class="label">OUTPUT</div>
+      <div class="panel-label">OUTPUT</div>
 
-      <div class="terminal-header">
+      <div class="terminal-top">
         <span>Structured Execution</span>
         <span id="status">READY</span>
       </div>
