@@ -13,22 +13,29 @@ body {
 
 /* HEADER */
 .header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  position: relative;
+  display: flex;
   align-items: center;
   margin-bottom: 50px;
 }
 
+/* LEFT */
 .header-left {
   display: flex;
   align-items: center;
 }
 
+/* CENTER TITLE (TRUE CENTER) */
 .header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
 }
 
+/* RIGHT */
 .header-right {
+  margin-left: auto;
   display: flex;
   justify-content: flex-end;
 }
@@ -139,7 +146,6 @@ input, select {
   border-radius: 6px;
 }
 
-/* FOCUS */
 input:focus, select:focus {
   outline: none;
   border-color: rgba(212,175,55,0.4);
